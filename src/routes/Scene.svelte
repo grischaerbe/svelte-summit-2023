@@ -1,13 +1,29 @@
 <script lang="ts">
 	import { T, useFrame } from '@threlte/core'
-	import { Environment, Text } from '@threlte/extras'
+	import {
+		Environment,
+		Text,
+		interactivity
+	} from '@threlte/extras'
 	import Ticket from './Ticket.svelte'
+	import {
+		DEG2RAD,
+		RAD2DEG
+	} from 'three/src/math/MathUtils'
+	import { spring } from 'svelte/motion'
 
 	let rotationY = 0
 
 	useFrame((_, delta) => {
 		rotationY += 0.1 * delta
+		if (rotationY * RAD2DEG > 90) {
+			rotationY -= 180 * DEG2RAD
+		}
 	})
+
+	interactivity()
+
+	const scale = spring(1)
 </script>
 
 <T.PerspectiveCamera
@@ -18,7 +34,16 @@
 
 <Environment files="/oil-on-water.png" />
 
-<T.Group rotation.y={rotationY}>
+<T.Group
+	rotation.y={rotationY}
+	on:pointerenter={() => {
+		scale.set(1.1)
+	}}
+	on:pointerleave={() => {
+		scale.set(1)
+	}}
+	scale={$scale}
+>
 	<Text
 		text="Max Mustermann"
 		font="/Flama.otf"
