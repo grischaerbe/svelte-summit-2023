@@ -1,38 +1,24 @@
-# create-svelte
+# Threlte 6 at the Svelte Summit 2023
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This Repository contains the source code of the Svelte Summit 2023 talk "Threlte 6".
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
+## Installation
 
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+pnpm install
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Usage
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm dev
 ```
 
-## Building
+### Available Routes
 
-To create a production version of your app:
+- `/` - The example that has been shown in the talk.
+- `/intro` - The example that has been shown in the intro of the talk, which is a slightly more polished version.
 
-```bash
-npm run build
-```
+### Blender Model
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+The Blender model is located in `src/Blender/Ticket.blend`
